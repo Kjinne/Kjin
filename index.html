@@ -10,87 +10,148 @@
     <script src="js/uikit-icons.js"></script>
 
     <title>Kjin</title>
-    <link rel="icon" type="image/png" href="css/Kinkin.png">
+    <link rel="icon" type="image/png" href="assets/Kinkin.png">
+    <style>
+        .project-link {
+            transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
+        }
+        .project-link:hover {
+            color: #78fff4;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .uk-modal-dialog {
+            background: #000 !important;
+            color: #fff !important;
+        }
+        /* Hide the projects section initially */
+        #projects {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-visible@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-    
-    <div class="uk-navbar-left">
-        <a href="" class="uk-navbar-item uk-logo uk-light">Kjin.</a>
-    </div>
-    <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav uk-light">
-            <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
-            <li><a class="uk-button-text uk-text-capitalize" href="#projects" uk-scroll>Projects</a></li>
-            <li><a class="uk-button-text uk-text-capitalize" href="#" onclick="openMailPopup()">Contact</a></li>
-        </ul>
-    </div>
-</nav>
+        <div class="uk-navbar-left">
+            <a href="#" class="uk-navbar-item uk-logo uk-light">Kjin.</a>
+        </div>
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-light">
+                <li><a class="uk-button-text uk-text-capitalize" href="#about" uk-scroll>About</a></li>
+                <li><a class="uk-button-text uk-text-capitalize" href="#" onclick="toggleProjects()">Projects</a></li>
+                <li><a class="uk-button-text uk-text-capitalize" href="#" onclick="openMailPopup(event)">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav class="uk-navbar-container uk-margin-small-left uk-margin-small-right uk-hidden@m uk-margin-xlarge-left uk-margin-xlarge-right" uk-navbar uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-    
-    <div class="uk-navbar-left">
-        <a href="" class="uk-navbar-item uk-logo uk-light">Kjin.</a>
+    <section class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+        <h1 class="uk-margin-xlarge-left uk-light uk-text-left uk-margin-xlarge-right">
+            I'm Kjin, <br>Cái gì quan trọng thì mình ưu tiên.
+        </h1>
+        <a href="#about" class="uk-margin-xlarge-left uk-text-capitalize uk-button uk-button-secondary" uk-scroll>About Me</a>
+    </section>
+
+    <section id="projects" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+        <h3 class="uk-margin-xlarge-left uk-light">Projects</h3>
+        <div class="uk-margin-xlarge-left uk-margin-xlarge-right">
+            <p class="uk-light">
+                <span class="project-link" uk-toggle="target: #kjin-family-modal">Kjin Family</span>
+            </p>
+        </div>
+    </section>
+
+    <div id="kjin-family-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Kjin Family</h2>
+            <p>Dự án cộng đồng với các thành viên cùng đam mê công nghệ.</p>
+            <p class="uk-light">
+                <span class="project-link" onclick="openModal('#kjinny-modal')">Kjinny - AI bot</span><br>
+                <span class="project-link" onclick="openModal('#dailyrealtime-modal')">Dailyrealtime</span><br>
+                <span class="project-link" onclick="openModal('#timetracker-modal')">Timetracker</span>
+            </p>
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Back</button>
+        </div>
     </div>
-    <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav uk-light">
-            <li><button uk-toggle="target: #offcanvas-nav" type="button" uk-navbar-toggle-icon></button></li>
-        </ul>
+
+    <div id="kjinny-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Kjinny - AI bot</h2>
+            <p>Chatbot AI thông minh với các tính năng:<br>
+            - Xử lý ngôn ngữ tự nhiên<br>
+            - Học hỏi từ tương tác người dùng<br>
+            - Tích hợp đa nền tảng</p>
+            <button class="uk-button uk-button-default" type="button" onclick="openModal('#kjin-family-modal')">Back</button>
+        </div>
     </div>
-</nav>
 
-<div id="offcanvas-nav" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-            <li class="uk-active"><a href="#" uk-scroll>Home</a></li>
-            <li class="uk-active"><a href="#about" uk-scroll>About</a></li>
-            <li class="uk-active"><a href="#projects" uk-scroll>Projects</a></li>
-            <li class="uk-active"><a href="#" onclick="openMailPopup()">Contact</a></li>
-        </ul>
+    <div id="dailyrealtime-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Dailyrealtime</h2>
+            <p>Ứng dụng quản lý thời gian thực với:<br>
+            - Theo dõi công việc theo thời gian thực<br>
+            - Báo cáo tự động<br>
+            - Đồng bộ đa thiết bị</p>
+            <button class="uk-button uk-button-default" type="button" onclick="openModal('#kjin-family-modal')">Back</button>
+        </div>
     </div>
-</div>
 
-<section class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
-    <h1 class="uk-margin-xlarge-left uk-light uk-text-left uk-margin-xlarge-right">I'm Kjin, <br>Cái gì quan trọng thì mình ưu tiên.<br><br></h1>
-    <a href="#about" class="uk-margin-xlarge-left uk-text-capitalize uk-button uk-button-secondary" uk-scroll>About Me</a>
-</section>
+    <div id="timetracker-modal" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <h2 class="uk-modal-title">Timetracker</h2>
+            <p>Công cụ phân tích thời gian làm việc:<br>
+            - Thống kê bằng biểu đồ<br>
+            - Đặt mục tiêu hàng ngày<br>
+            - Nhắc nhở thông minh</p>
+            <button class="uk-button uk-button-default" type="button" onclick="openModal('#kjin-family-modal')">Back</button>
+        </div>
+    </div>
 
-<audio id="background-music" autoplay loop>
-    <source src="music/background.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<script>
-    document.addEventListener("visibilitychange", function() {
-        var audio = document.getElementById("background-music");
-        if (document.hidden) {
-            audio.pause();
-        } else {
-            audio.play();
+    <script>
+        function openMailPopup(event) {
+            event.preventDefault();
+            var email = "kjinee@proton.me";
+            var mailtoLink = "mailto:" + email;
+            var copyText = `Email: ${email}\nClick OK to open your mail client.`;
+            if (confirm(copyText)) {
+                window.location.href = mailtoLink;
+            }
         }
-    });
 
-    function openMailPopup() {
-        var email = "kjinee@proton.me";
-        var mailtoLink = "mailto:" + email;
-        var copyText = `Email: ${email}\nClick OK to open your mail client.`;
-        if (confirm(copyText)) {
-            window.location.href = mailtoLink;
+        document.querySelectorAll("a[onclick='openMailPopup(event)']").forEach(link => {
+            link.addEventListener("click", openMailPopup);
+        });
+
+        function toggleProjects() {
+            var projectsSection = document.getElementById('projects');
+            if (projectsSection.style.display === 'none' || projectsSection.style.display === '') {
+                projectsSection.style.display = 'block';
+            } else {
+                projectsSection.style.display = 'none';
+            }
         }
-    }
-</script>
 
-<br>
-<hr class="uk-margin-xlarge-top uk-margin-xlarge-left uk-margin-xlarge-right">
+        function openModal(target) {
+            UIkit.modal(target).show();
+        }
+    </script>
 
-<section id="about" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
-<h3 class="uk-margin-xlarge-left uk-light">About Me</h3>
-<p class="uk-margin-xlarge-left uk-margin-xlarge-right">Just Kjin<br><br> </p>
-<a href="https://www.facebook.com/Kjineee/" class="uk-margin-xlarge-left uk-light uk-button-text" uk-icon="facebook"></a> &nbsp;<a href="https://www.instagram.com/_kjinee/" class="uk-light uk-button-text" uk-icon="instagram"></a> &nbsp;<a href="https://github.com/Kjinne" class="uk-button-text uk-light" uk-icon="github"></a> &nbsp;<a href="https://discord.com/users/890945559291109386" class=" uk-light uk-button-text" uk-icon="discord"></a>
+    <hr class="uk-margin-xlarge-top uk-margin-xlarge-left uk-margin-xlarge-right">
 
-<footer class="uk-text-center uk-margin-xlarge-top uk-light">
-    <p>&copy; Kjin since 2019</p>
-</footer>
+    <section id="about" class="uk-margin-small-left uk-margin-small-right uk-margin-xlarge-top uk-margin-xlarge-bottom">
+        <h3 class="uk-margin-xlarge-left uk-light">About Me</h3>
+        <p class="uk-margin-xlarge-left uk-margin-xlarge-right">Just Kjin</p>
+        <a href="https://www.facebook.com/Kjineee/" class="uk-margin-xlarge-left uk-light uk-button-text" uk-icon="facebook"></a> 
+        <a href="https://www.instagram.com/_kjinee/" class="uk-light uk-button-text" uk-icon="instagram"></a> 
+        <a href="https://github.com/Kjinne" class="uk-button-text uk-light" uk-icon="github"></a> 
+        <a href="https://discord.com/users/890945559291109386" class=" uk-light uk-button-text" uk-icon="discord"></a>
+    </section>
 
+    <footer class="uk-text-center uk-margin-xlarge-top uk-light">
+        <p>&copy; Kjin since 2019</p>
+    </footer>
 </body>
 </html>
